@@ -1,16 +1,23 @@
 <template>
   <div id="app">
       <EditableTable v-model="items" :fields="fields"></EditableTable>
+      <b-button v-on:click="libroMayor">Generar libro Mayor</b-button>
   </div>
 </template>
 
 <script>
 import EditableTable from './components/EditableTable.vue';
 
+
 export default {
   descripcion: "App",
   components: {
     EditableTable
+  },
+  methods:{
+    libroMayor(){
+console.log("asdadada");
+}
   },
   data() {
     return {
