@@ -8,7 +8,7 @@
 import EditableTable from './components/EditableTable.vue';
 
 export default {
-  name: "App",
+  descripcion: "App",
   components: {
     EditableTable
   },
@@ -16,17 +16,17 @@ export default {
     return {
       fields: [
         { key: "selectRow", label: "" },
-        { key: "name", label: "Name", type: "text" },
-        { key: "department", label: "Department", type: "select", options: ['Development', 'Marketing', 'HR', 'Accounting'] },
-        { key: "age", label: "Age", type: "number" },
-        { key: "dateOfBirth", label: "Date Of Birth", type: "date" },
+        { key: "descripcion", label: "descripcion", type: "text" },
+        { key: "tipo", label: "tipo", type: "select", options: ['Debe', 'Haber'] },
+        { key: "cantidad", label: "cantidad", type: "number" },
+        { key: "fecha", label: "fecha", type: "date" },
         { key: "edit", label: "", type: "edit" }
       ],
        items: [
-          { age: 40, name: 'Dickerson', department: 'Development', dateOfBirth: '1984-05-20' },
-          { age: 21, name: 'Larsen', department: 'Marketing', dateOfBirth: '1984-05-20' },
-          { age: 89, name: 'Geneva', department: 'HR', dateOfBirth: '1984-05-20' },
-          { age: 38, name: 'Jami', department: 'Accounting', dateOfBirth: '1984-05-20' }
+          { cantidad: 100, descripcion: 'Caja', tipo: 'Debe', fecha: '2021-05-20' },
+          { cantidad: 150, descripcion: 'Deudores Varios', tipo: 'Debe', fecha: '2021-05-20' },
+          { cantidad: 100, descripcion: 'Caja', tipo: 'Haber', fecha: '2021-05-20' },
+          { cantidad: 150, descripcion: 'Bco Cta Cte', tipo: 'Haber', fecha: '2021-05-20' }
         ]
     };
   }
