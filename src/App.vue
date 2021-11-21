@@ -13,19 +13,26 @@
 
 <script>
 import EditableTable from './components/EditableTable.vue';
-const Comp = {
- template: '<div>Hello world</div>'
+let items2=[{descripcion: 'asd'}]
+//items=this.items
+let Comp = {
+ template: '<div>Hello world '+items2[0].descripcion+'</div>'
 }
 export default {
   descripcion: "App",
   components: {
     EditableTable, Comp
   },
+/*   watch: {
+    items2 = this.items
+  }, */
   methods:{
     libroMayor(){
   for (var i = 0; i < this.items.length; i++) {
 console.log(this.items[i].descripcion);
   }
+  Comp = {
+ template: '<div>Hello world '+this.items[0].descripcion+'</div>' }
 this.comp2.push(Comp)
 },
   },
