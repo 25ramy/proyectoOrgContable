@@ -1,26 +1,37 @@
 <template>
   <div id="app">
       <EditableTable v-model="items" :fields="fields"></EditableTable>
-      <b-button v-on:click="libroMayor">Generar libro Mayor</b-button>
+      <!-- <b-button v-on:click="libroMayor">Generar libro Mayor</b-button> -->
+        <b-button type="button" @click="libroMayor">Generar libro Mayor</b-button>
+  <component
+    v-for="(component, index) in comp2"
+    :key="index"
+    :is="component"
+  />
   </div>
 </template>
 
 <script>
 import EditableTable from './components/EditableTable.vue';
-
-
+const Comp = {
+ template: '<div>Hello world</div>'
+}
 export default {
   descripcion: "App",
   components: {
-    EditableTable
+    EditableTable, Comp
   },
   methods:{
     libroMayor(){
-console.log("asdadada");
-}
+  for (var i = 0; i < this.items.length; i++) {
+console.log(this.items[i].descripcion);
+  }
+this.comp2.push(Comp)
+},
   },
   data() {
     return {
+      comp2: [Comp],
       fields: [
         { key: "selectRow", label: "" },
         { key: "descripcion", label: "descripcion", type: "text" },
