@@ -14,10 +14,46 @@
 <script>
 import EditableTable from './components/EditableTable.vue';
 let items2=[{descripcion: 'asd'}]
+let titleAdded=[];
 //items=this.items
 let Comp = {
- template: '<div>Hello world '+items2[0].descripcion+'</div>'
+ template: '<div></div>'
 }
+function tablas(items){
+    let tabla='';
+    
+    for (var i = 0; i < items.length; i++) {
+    let total=0;
+    if(!(titleAdded.includes(items[i].descripcion))){
+      
+      tabla=tabla+'<table>'+'<tr>'+items[i].descripcion+'</tr>';
+      titleAdded.push(items[i].descripcion);
+      tabla=tabla+'<tr>'+' <tr><th>Debe</th><th>Haber</th></tr>'
+    for (var j = 0; j < items.length; j++) {
+      if((items[i].descripcion==items[j].descripcion)&&(items[j].tipo=='Debe')){
+        tabla=tabla+'<tr>'+'<td>'+items[j].cantidad+'</td>'+'</tr>'
+        total=total+items[j].cantidad;
+      }
+      if((items[i].descripcion==items[j].descripcion)&&(items[j].tipo=='Haber')){
+        tabla=tabla+'<tr>'+'<td></td>'+'<td>'+items[j].cantidad+'</td>'+'</tr>'
+        total=total-items[j].cantidad;
+      }
+      
+    }
+    }
+    tabla=tabla+'<tr></tr>'
+    if(total>=0){
+    tabla=tabla+'<td><b>'+total+'</b></td>'
+    }
+    if(total<0){
+    tabla=tabla+'<td></td>'+'<td><b>'+Math.abs(total)+'</b></td>'
+    }
+    
+    tabla=tabla+'</tr>'+'</table>'
+    } //end item table Caja eg
+    
+    return tabla;
+  }
 export default {
   descripcion: "App",
   components: {
@@ -28,11 +64,12 @@ export default {
   }, */
   methods:{
     libroMayor(){
-  for (var i = 0; i < this.items.length; i++) {
+/*   for (var i = 0; i < this.items.length; i++) {
 console.log(this.items[i].descripcion);
-  }
+  } */
   Comp = {
- template: '<div>Hello world '+this.items[0].descripcion+'</div>' }
+ template: '<div>'+tablas(this.items)+'</div>'//'<div>Hello world '+this.items[0].descripcion+tablas(this.items)+'</div>' 
+ }
 this.comp2.push(Comp)
 },
   },
