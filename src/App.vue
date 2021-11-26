@@ -42,13 +42,13 @@ function tablas(items){
     }
     }
     tabla=tabla+'<tr></tr>'
-    if(total>=0){
+    if(total>0){
     tabla=tabla+'<td><b>'+total+'</b></td>'
     }
     if(total<0){
     tabla=tabla+'<td></td>'+'<td><b>'+Math.abs(total)+'</b></td>'
     }
-    
+    console.log(total)
     tabla=tabla+'</tr>'+'</table>'
     } //end item table Caja eg
     
